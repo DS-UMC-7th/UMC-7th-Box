@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>navbar</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      nav {
+        box-sizing: border-box;
+        padding: 24px;
+
+        height: 88px;
+
+        display: flex;
+        justify-content: space-between;
+      }
+      div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      img.logo {
+        width: 40px;
+        height: 28px;
+        display: inline-block;
+      }
+      h2 {
+        margin: 10px;
+        font-size: 16px;
+        font-weight: 900;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+      p {
+        margin: 4px;
+        padding: 8px 16px;
+      }
+      img.toggle {
+        padding: 10px;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div>
+        <img class="logo" src="./images/main-light-logo.webp" alt="상명대학교 로고" />
+        <h2>SMUMC</h2>
+      </div>
+      <div>
+        <p>PROJECTS</p>
+        <p>MEMBERS</p>
+        <p>NOTICE</p>
+        <img class="toggle" src="./images/light_mode.png" alt="라이트모드" />
+      </div>
+    </nav>
+  </body>
+</html>

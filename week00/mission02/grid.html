@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>grid</title>
+    <style>
+      body {
+        margin: 0;
+        color: white;
+        font-size: 40px;
+
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(9, 1fr);
+      }
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      div.header {
+        height: 100px;
+        background-color: black;
+        grid-column: 1/2;
+      }
+      div.menu {
+        background-color: orangered;
+        grid-column: 2/5;
+      }
+      div.hero {
+        background-color: cornflowerblue;
+        grid-column: 1/5;
+        grid-row: 2/6;
+      }
+      div.main {
+        background-color: midnightblue;
+        grid-column: 1/3;
+        grid-row: 6/10;
+      }
+      div.image {
+        background-color: lightblue;
+        grid-column: 4/5;
+        grid-row: 6/8;
+      }
+      div.extra {
+        background-color: darkcyan;
+        grid-column: 4/5;
+        grid-row: 8/10;
+      }
+      div.banner {
+        height: 140px;
+        background-color: orange;
+        grid-column: 1/5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">header</div>
+    <div class="menu">menu</div>
+    <div class="hero">hero</div>
+    <div class="main">main</div>
+    <div class="image">image</div>
+    <div class="extra">extra</div>
+    <div class="banner">banner</div>
+  </body>
+</html>
