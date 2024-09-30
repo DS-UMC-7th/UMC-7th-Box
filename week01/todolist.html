@@ -4,6 +4,72 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>to-do list</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: center; */
+        background-color: whitesmoke;
+      }
+      h1 {
+        margin: 48px;
+      }
+      input {
+        margin: 12px;
+        padding: 12px;
+        width: 500px;
+        height: 40px;
+      }
+      .container-outer {
+        width: 500px;
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+      }
+      .container-inner {
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 12px;
+        padding: 12px;
+        width: 220px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        background-color: white;
+      }
+      p {
+        margin: 0;
+        max-width: 140px;
+
+        white-space: nowrap; /* 한 줄로 표시 */
+        overflow: hidden; /* 넘치는 부분 숨기기 */
+        text-overflow: ellipsis; /* 말줄임표 표시 */
+      }
+      button {
+        width: 48px;
+        height: 24px;
+
+        font-weight: 900;
+
+        border: none;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
     <h1>UMC Study Plan</h1>
@@ -11,14 +77,21 @@
       <input type="text" placeholder="스터디 계획을 작성해보세요!" />
     </form>
 
-    <div>
-      <h3>해야 할 일</h3>
-      <ul class="todo-container"></ul>
-    </div>
+    <div class="container-outer">
+      <div class="container-inner">
+        <h3>해야 할 일</h3>
+        <ul id="todo-container">
+          <!-- <li>
+            <p>해야 할 일</p>
+            <button>완료</button>
+          </li> -->
+        </ul>
+      </div>
 
-    <div>
-      <h3>해낸 일</h3>
-      <ul class="completed-container"></ul>
+      <div class="container-inner">
+        <h3>해낸 일</h3>
+        <ul id="completed-container"></ul>
+      </div>
     </div>
 
     <script src="./todolist.js"></script>

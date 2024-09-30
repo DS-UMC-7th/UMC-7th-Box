@@ -1,7 +1,7 @@
 const todoForm = document.querySelector("form");
 const todoInput = document.querySelector("form input");
-const todoList = document.querySelector(".todo-container");
-const completedList = document.querySelector(".completed-container");
+const todoList = document.querySelector("#todo-container");
+const completedList = document.querySelector("#completed-container");
 
 todoForm.addEventListener("submit", (event) => {
   event.preventDefault();

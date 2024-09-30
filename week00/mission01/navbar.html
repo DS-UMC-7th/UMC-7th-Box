@@ -43,6 +43,16 @@
         height: 20px;
         display: inline-block;
       }
+
+      /* 반응형 추가 */
+      @media (max-width: 767px) {
+        h2 {
+          display: none;
+        }
+        div.full {
+          width: 100%;
+        }
+      }
     </style>
   </head>
   <body>
@@ -51,7 +61,7 @@
         <img class="logo" src="./images/main-light-logo.webp" alt="상명대학교 로고" />
         <h2>SMUMC</h2>
       </div>
-      <div>
+      <div class="full">
         <p>PROJECTS</p>
         <p>MEMBERS</p>
         <p>NOTICE</p>
