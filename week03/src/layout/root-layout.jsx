@@ -4,12 +4,14 @@ import Sidebar from "../components/Sidebar";
 import styled from "styled-components";
 
 const Container = styled.div`
+  margin: 0;
+  padding: 0;
   width: 100%;
-  height: calc(100% - 72px);
+  min-height: calc(100vh - 72px);
 
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: stretch;
 `;
 
 const RootLayout = () => {

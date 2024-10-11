@@ -5,7 +5,7 @@ import { BiSolidCameraMovie } from "react-icons/bi";
 
 const BackgroundColor = styled.nav`
   width: 200px;
-  height: 100%;
+  min-height: calc(100vh - 72px);
 
   background-color: #1c1c1c;
   color: white;
