@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import useCustomAxios from "../../hooks/useCustomAxios";
+import useCustomAxios from "../../hooks/use-custom-axios";
 
 const Container = styled.div`
   margin: 0;

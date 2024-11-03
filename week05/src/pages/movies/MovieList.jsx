@@ -1,7 +1,7 @@
 // import { useEffect, useState } from "react";
 import styled from "styled-components";
 import MovieComponent from "../../components/movies/MovieComponent";
-import useCustomAxios from "../../hooks/useCustomAxios";
+import useCustomAxios from "../../hooks/use-custom-axios";
 import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
