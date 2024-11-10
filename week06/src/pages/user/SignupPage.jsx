@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
 import * as A from "./UserPage.style";
 
 // useForm을 이용한 유효성 검사
 export default function SignupPage() {
+  const navigate = useNavigate();
   const schema = yup.object().shape({
     email: yup
       .string()
@@ -30,8 +33,47 @@ export default function SignupPage() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    console.log("폼 데이터 제출: ", data);
+  // api 연결
+  const api = axios.create({
+    baseURL: "http://localhost:3000/",
+  });
+
+  async function signupUser({ email, password }) {
+    try {
+      // console.log("회원가입 email: ", email); //
+      // console.log("회원가입 password: ", password); //
+
+      const response = await api.post("auth/register", {
+        email: email,
+        // "dydals34403@gmail.com"
+        password: password,
+        passwordCheck: password,
+      });
+
+      console.log("회원가입 성공:", response.data);
+      return true;
+    } catch (error) {
+      console.error("회원가입 실패:", error.response?.data || error.message);
+      return false;
+    }
+  }
+
+  // 제출
+  const onSubmit = async (data) => {
+    // console.log("email: ", data.email); //
+    // console.log("password: ", data.password); //
+
+    const isSuccess = await signupUser({
+      email: data.email,
+      password: data.password,
+      // "email123@gmail.com"
+      // "password123"
+    });
+
+    if (isSuccess) {
+      navigate(`/login`);
+      // console.log("회원가입 성공");
+    }
   };
 
   const [isValid, setIsValid] = useState(true); //

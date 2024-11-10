@@ -17,6 +17,7 @@ import Search from "./pages/Search";
 import MovieCategory from "./pages/movies/MovieCategory";
 import MovieList from "./pages/movies/MovieList";
 import MovieDetail from "./pages/movies/MovieDetail";
+import { UserContextProvider } from "./context/UserContext";
 
 const browserRouter = createBrowserRouter([
   {
@@ -82,9 +83,11 @@ const BackgroundColor = styled.div`
 
 function App() {
   return (
-    <BackgroundColor>
-      <RouterProvider router={browserRouter} />
-    </BackgroundColor>
+    <UserContextProvider>
+      <BackgroundColor>
+        <RouterProvider router={browserRouter} />
+      </BackgroundColor>
+    </UserContextProvider>
   );
 }
 export default App;

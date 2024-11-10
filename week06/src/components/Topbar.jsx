@@ -1,5 +1,8 @@
+import axios from "axios";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { UserContext } from "../context/UserContext";
 
 const BackgroundColor = styled.nav`
   padding: 24px;
@@ -43,20 +46,67 @@ const Button = styled.button`
 `;
 
 export default function Topbar() {
+  const { isLogined, setIsLogined, accessToken } = useContext(UserContext);
+  const [userName, setUserName] = useState("");
+
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+
+    setIsLogined(false);
+  };
+
+  function removeDomainFromEmail(email) {
+    const atIndex = email.indexOf("@");
+    return email.slice(0, atIndex);
+  }
+
+  // api 연결
+  const api = axios.create({
+    baseURL: "http://localhost:3000/",
+  });
+
+  async function fetchUserId() {
+    try {
+      const response = await api.get("user/me", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      console.log("회원정보 불러오기 성공:", response.data.email);
+      setUserName(removeDomainFromEmail(response.data.email));
+    } catch (error) {
+      console.error("회원정보 불러오기 실패:", error.response?.data || error.message);
+    }
+  }
+  if (isLogined) {
+    fetchUserId();
+  }
+
   return (
     <BackgroundColor>
       <Logo>
         <Link to="/">YONGCHA</Link>
       </Logo>
       <ButtonContainer>
-        <Link to="/login">
-          <Button>로그인</Button>
-        </Link>
-        <Link to="/signup">
-          <Button color={"crimson"} $hoverColor={"#a51a36"}>
-            회원가입
-          </Button>
-        </Link>
+        {isLogined ? (
+          <>
+            <p>{userName}님 반갑습니다.</p>
+            <button onClick={handleLogout}>로그아웃</button>
+          </>
+        ) : (
+          <>
+            <Link to="/login">
+              <Button>로그인</Button>
+            </Link>
+            <Link to="/signup">
+              <Button color={"crimson"} $hoverColor={"#a51a36"}>
+                회원가입
+              </Button>
+            </Link>
+          </>
+        )}
       </ButtonContainer>
     </BackgroundColor>
   );
