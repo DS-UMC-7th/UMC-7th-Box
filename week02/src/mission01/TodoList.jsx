@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 import Input from "./Input";
-import "./todoList_style.css";
+import * as A from "./TodoList.style";
 
 export default function TodoList() {
   const [todos, setTodos] = useState([{ id: 1, task: "투두리스트를 작성해보세요." }]);
@@ -41,22 +41,22 @@ export default function TodoList() {
   };
 
   return (
-    <div className="todo-container">
-      <form className="todo-form" onSubmit={handleSubmit}>
-        <input
+    <A.TodoContainer>
+      <A.TodoForm onSubmit={handleSubmit}>
+        <A.TodoInput
           placeholder="할 일을 적어주세요"
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <button type="submit" onClick={addTodo}>
+        <A.TodoButton type="submit" onClick={addTodo}>
           할 일 등록
-        </button>
-      </form>
+        </A.TodoButton>
+      </A.TodoForm>
 
-      <ul className="todo-list">
-        {todos.map(({ id, task }, _) => (
-          <li className="todo-item" key={id}>
+      <A.TodoList>
+        {todos.map(({ id, task }) => (
+          <A.TodoItem key={id}>
             {editingId === id ? (
               <>
                 <Input task={task} handleOnChange={(e) => setEditText(e.target.value)} />
@@ -65,10 +65,10 @@ export default function TodoList() {
               </>
             ) : (
               <>
-                <h4>
+                <A.TodoItemText>
                   {/* {id}. */}
                   {task}
-                </h4>
+                </A.TodoItemText>
                 <Button
                   text={"수정하기"}
                   handleOnClick={() => {
@@ -79,9 +79,9 @@ export default function TodoList() {
                 <Button text={"삭제하기"} handleOnClick={() => deleteTodo(id)} />
               </>
             )}
-          </li>
+          </A.TodoItem>
         ))}
-      </ul>
-    </div>
+      </A.TodoList>
+    </A.TodoContainer>
   );
 }
