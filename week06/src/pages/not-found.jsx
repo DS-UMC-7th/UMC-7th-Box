@@ -17,7 +17,7 @@ const Contents = styled.h2`
 export default function NotFound() {
   return (
     <Container>
-      <Contents>경로가 잘못된 페이지입니다.</Contents>
+      <Contents>에러가 발생했거나 경로가 잘못된 페이지입니다.</Contents>
     </Container>
   );
 }
