@@ -2,6 +2,8 @@
 // import "react-dom";
 import styled from "styled-components";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 // Outlet
 import RootLayout from "./layout/root-layout";
@@ -81,13 +83,20 @@ const BackgroundColor = styled.div`
   background-color: #000000;
 `;
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <UserContextProvider>
-      <BackgroundColor>
-        <RouterProvider router={browserRouter} />
-      </BackgroundColor>
-    </UserContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <UserContextProvider>
+        <BackgroundColor>
+          <RouterProvider router={browserRouter} />
+        </BackgroundColor>
+      </UserContextProvider>
+
+      {/* 리액트 쿼리 - 캐싱 상태 확인 */}
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
 export default App;
@@ -95,7 +104,7 @@ export default App;
 // npm ci
 // npm run dev
 // npm install styled-components react-router-dom axios react-icons react-hook-form yup
-// npm install @hookform/resolvers
+// npm install @hookform/resolvers @tanstack/react-query @tanstack/react-query-devtools
 
 // npm install styled-components
 // npm install react-router-dom
@@ -103,6 +112,7 @@ export default App;
 // npm install react-icons
 // npm install react-hook-form yup
 // npm install @hookform/resolvers
+// npm install @tanstack/react-query
 
 // yarn add styled-components
 // yarn add react-router-dom
@@ -110,3 +120,5 @@ export default App;
 // yarn add react-icons
 // yarn add react-hook-form yup
 // yarn add @hookform/resolvers
+// yarn add @tanstack/react-query
+// yarn add @tanstack/react-query-devtools
