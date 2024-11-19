@@ -12,6 +12,7 @@ const useCustomAxios = (url) => {
 
   useEffect(() => {
     const getMovies = async () => {
+      setLoading(true);
       try {
         const response = await axiosInstance.get(url);
         setMovies(response);
