@@ -4,11 +4,8 @@ export const skeleton = keyframes`
   0%{
     opacity: 1;
   }
-  30%{
-    opacity: 0.75;
-  }
-  60%{
-    opacity: 1;
+  50%{
+    opacity: 0.7;
   }
   100%{
     opacity: 1;
@@ -28,7 +25,7 @@ export const CardListContainer = styled.ul`
 `;
 export const CardSkeletonContainer = styled.div`
   /* width: 120px; */
-  animation: ${skeleton} 1.5s 0.5s infinite ease normal;
+  animation: ${skeleton} 3s 0.5s infinite linear normal;
 `;
 export const CardMain = styled.div`
   position: relative;

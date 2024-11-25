@@ -5,8 +5,8 @@ const CardSkeleton = ({ number = 20 }) => {
   return (
     <>
       <A.CardListContainer>
-        {new Array(number).fill(0).map((_) => (
-          <A.CardSkeletonContainer>
+        {new Array(number).fill(0).map((_, index) => (
+          <A.CardSkeletonContainer key={index}>
             <A.CardMain />
             <A.TextWrapper>
               <A.TitleBox />

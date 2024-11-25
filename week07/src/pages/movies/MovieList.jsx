@@ -5,6 +5,8 @@ import useCustomAxios from "../../hooks/use-custom-axios";
 import { useNavigate } from "react-router-dom";
 import { useGetMovies } from "../../hooks/queries/useGetMovies";
 import { useQuery } from "@tanstack/react-query";
+import CardSkeleton from "../../components/movies/skeleton/card-skeleton";
+import { useGetInfiniteMovies } from "../../hooks/queries/useGetInfiniteMovies";
 
 const Container = styled.div`
   margin: 0;
@@ -48,6 +50,9 @@ export default function MovieList({ path, category }) {
   // cacheTime, staleTime => 해당 시간동안은 함수 실행x(데이터 페치x)
   // console.log("data: ", movies?.results); //
 
+  const { data } = useGetInfiniteMovies({ category: path });
+  // console.log("무한스크롤 데이터: ", data);
+
   const navigate = useNavigate();
   const handleMoveToDetail = (id) => {
     navigate(`/movies/${id}`, {
@@ -59,7 +64,7 @@ export default function MovieList({ path, category }) {
     return (
       <Container>
         <Contents>{category}</Contents>
-        <p style={{ color: "white" }}>Loading...</p>
+        <CardSkeleton number={20} />
       </Container>
     );
   }
